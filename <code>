@@ -1,0 +1,190 @@
+#include <Servo.h>
+Servo lidservo;
+Servo armservo;
+
+
+int switchpin = 3;
+
+int action = 1;
+
+int pos = 0;
+
+void setup() {
+  pinMode(switchpin, INPUT);
+  lidservo.attach(4);
+  armservo.attach(2);
+
+
+  // Servo Default Starting Position
+
+  armservo.write(150);
+  lidservo.write(100);
+}
+
+void loop() {
+
+  // Action Selection starting with 1
+
+  if (digitalRead(switchpin) == HIGH)
+  {
+    if (action > 7) {
+      action = 1;
+    }
+    if (action == 1) {
+      action1();
+    }
+    else if (action == 2) {
+      action2();
+    }
+    else if (action == 3) {
+      action3();
+    }
+    else if (action == 4) {
+      action4();
+    }
+    else if (action == 5) {
+      action5();
+    }
+    else if (action == 6) {
+      action6();
+    }
+    else if (action == 7) {
+      action7();
+    }
+
+
+    action += 1;
+
+  }
+}
+
+//The Following are actions that are chosen chronologically
+
+void action1() {
+  lidservo.write(150);
+  delay(1000);
+  armservo.write(50);
+  delay(500);
+  armservo.write(150);
+  delay(1000);
+  lidservo.write(100);
+  delay(1000);
+}
+
+void action2() {
+  lidservo.write(150);
+  delay(100);
+  armservo.write(50);
+  delay(250);
+  armservo.write(150);
+  delay(100);
+  lidservo.write(100);
+}
+
+void action3() {
+  for (pos = 100; pos < 150; pos += 1)
+  {
+    lidservo.write(pos);
+    delay(50);
+  }
+  armservo.write(50);
+  delay(250);
+  armservo.write(150);
+  delay(100);
+  lidservo.write(100);
+}
+
+void action4() {
+  delay(250);
+  lidservo.write(150);
+  delay(100);
+  armservo.write(50);
+  delay(2500);
+  for (pos = 50; pos < 150; pos += 1)
+  {
+    armservo.write(pos);
+    delay(50);
+  }
+  lidservo.write(100);
+}
+
+void action5() {
+  lidservo.write(150);
+  delay(500);
+  lidservo.write(100);
+  delay(500);
+  lidservo.write(150);
+  delay(500);
+  lidservo.write(100);
+  delay(500);
+  lidservo.write(150);
+  delay(500);
+  lidservo.write(100);
+  delay(2500);
+  lidservo.write(150);
+  delay(100);
+  armservo.write(50);
+  delay(250);
+  armservo.write(150);
+  delay(100);
+  lidservo.write(100);
+}
+
+void action6() {
+  lidservo.write(150);
+  delay(100);
+  armservo.write(70);
+  delay(250);
+  armservo.write(150);
+  delay(100);
+  lidservo.write(100);
+  delay(250);
+  lidservo.write(150);
+  delay(100);
+  armservo.write(70);
+  delay(250);
+  armservo.write(150);
+  delay(100);
+  lidservo.write(100);
+  delay(250);
+  lidservo.write(150);
+  delay(100);
+  armservo.write(70);
+  delay(250);
+  armservo.write(150);
+  delay(100);
+  lidservo.write(100);
+  delay(250);
+  lidservo.write(150);
+  delay(100);
+  armservo.write(50);
+  delay(250);
+  armservo.write(150);
+  delay(100);
+  lidservo.write(100);
+}
+
+void action7() {
+  for (pos = 100; pos < 150; pos += 2)
+  {
+    lidservo.write(pos);
+    delay(50);
+  }
+  for (pos = 150; pos > 70; pos -= 2)
+  {
+    armservo.write(pos);
+    delay(100);
+  }
+  armservo.write(50);
+  for (pos = 50; pos < 150; pos += 2)
+  {
+    armservo.write(pos);
+    delay(100);
+  }
+  for (pos = 150; pos > 100; pos -= 2)
+  {
+    lidservo.write(pos);
+    delay(50);
+  }
+  lidservo.write(100);
+}
